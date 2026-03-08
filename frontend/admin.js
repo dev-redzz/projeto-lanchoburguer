@@ -1,7 +1,7 @@
 /* admin.js - LanchoBurguer Admin Panel */
 'use strict';
 
-const API = 'http://localhost:3001/api';
+const API = 'https://projeto-lanchoburguer-production.up.railway.app/api';
 let token = localStorage.getItem('lb_admin_token');
 let adminUser = null;
 
