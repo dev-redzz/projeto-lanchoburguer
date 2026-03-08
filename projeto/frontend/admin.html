@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - LanchoBurguer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">🍔</div>
+      <h1>LanchoBurguer</h1>
+      <p>Painel Administrativo</p>
+      <div id="loginError" class="login-error" style="display:none"></div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@lanchoburguer.com" />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" />
+      </div>
+      <button class="btn btn--primary btn--full" id="btnLogin">Entrar no Painel</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="admin-panel" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__logo">
+        <span>🍔</span>
+        <span>LanchoBurguer</span>
+      </div>
+      <nav class="sidebar__nav">
+        <button class="nav-item active" data-page="dashboard">📊 Dashboard</button>
+        <button class="nav-item" data-page="products">🍔 Produtos</button>
+        <button class="nav-item" data-page="categories">🗂️ Categorias</button>
+        <button class="nav-item" data-page="orders">📋 Pedidos</button>
+        <button class="nav-item" data-page="settings">⚙️ Configurações</button>
+      </nav>
+      <div class="sidebar__footer">
+        <button class="btn-logout" id="btnLogout">🚪 Sair</button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="topbar">
+        <h2 class="page-title" id="pageTitle">Dashboard</h2>
+        <div class="topbar__user">
+          <span id="adminName">Admin</span>
+          <div class="avatar">A</div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD PAGE -->
+      <div id="page-dashboard" class="page active">
+        <div class="stats-grid">
+          <div class="stat-card stat-card--yellow">
+            <div class="stat-card__icon">📦</div>
+            <div class="stat-card__info">
+              <div class="stat-card__value" id="statOrders">-</div>
+              <div class="stat-card__label">Total de Pedidos</div>
+            </div>
+          </div>
+          <div class="stat-card stat-card--dark">
+            <div class="stat-card__icon">💰</div>
+            <div class="stat-card__info">
+              <div class="stat-card__value" id="statRevenue">-</div>
+              <div class="stat-card__label">Faturamento Total</div>
+            </div>
+          </div>
+          <div class="stat-card stat-card--yellow">
+            <div class="stat-card__icon">🍔</div>
+            <div class="stat-card__info">
+              <div class="stat-card__value" id="statProducts">-</div>
+              <div class="stat-card__label">Produtos Cadastrados</div>
+            </div>
+          </div>
+        </div>
+        <div class="recent-orders">
+          <h3>Pedidos Recentes</h3>
+          <div id="recentOrdersList" class="orders-list">
+            <p class="loading-text">Carregando...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTS PAGE -->
+      <div id="page-products" class="page">
+        <div class="page-actions">
+          <button class="btn btn--primary" id="btnNewProduct">+ Novo Produto</button>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table" id="productsTable">
+            <thead>
+              <tr>
+                <th>Emoji</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody">
+              <tr><td colspan="6" class="loading-text">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CATEGORIES PAGE -->
+      <div id="page-categories" class="page">
+        <div class="page-actions">
+          <button class="btn btn--primary" id="btnNewCategory">+ Nova Categoria</button>
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Emoji</th><th>Nome</th><th>Slug</th><th>Ações</th></tr>
+            </thead>
+            <tbody id="categoriesTableBody">
+              <tr><td colspan="4" class="loading-text">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ORDERS PAGE -->
+      <div id="page-orders" class="page">
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Data</th><th>Cliente</th><th>Telefone</th><th>Total</th><th>Status</th><th>Ação</th></tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr><td colspan="6" class="loading-text">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SETTINGS PAGE -->
+      <div id="page-settings" class="page">
+        <div class="settings-form">
+          <div class="form-group">
+            <label>Nome da Lanchonete</label>
+            <input type="text" id="settingStoreName" />
+          </div>
+          <div class="form-group">
+            <label>Número do WhatsApp (com DDI, ex: 5511999999999)</label>
+            <input type="text" id="settingWhatsapp" />
+          </div>
+          <div class="form-group">
+            <label>Taxa de Entrega (R$)</label>
+            <input type="number" id="settingDelivery" step="0.50" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Frete Grátis acima de (R$)</label>
+            <input type="number" id="settingFreeAbove" step="5" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Horário Semana</label>
+            <input type="text" id="settingWeekdays" placeholder="11:00 - 23:00" />
+          </div>
+          <div class="form-group">
+            <label>Horário Final de Semana</label>
+            <input type="text" id="settingWeekends" placeholder="11:00 - 00:00" />
+          </div>
+          <button class="btn btn--primary" id="btnSaveSettings">💾 Salvar Configurações</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL PRODUTO -->
+  <div class="admin-modal-overlay" id="productModalOverlay" style="display:none">
+    <div class="admin-modal">
+      <div class="admin-modal__header">
+        <h3 id="productModalTitle">Novo Produto</h3>
+        <button class="modal-close" onclick="closeProductModal()">✕</button>
+      </div>
+      <div class="admin-modal__body">
+        <input type="hidden" id="productId" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome *</label>
+            <input type="text" id="productName" placeholder="X-Burguer Clássico" />
+          </div>
+          <div class="form-group">
+            <label>Emoji</label>
+            <input type="text" id="productEmoji" placeholder="🍔" maxlength="2" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Descrição *</label>
+          <textarea id="productDesc" rows="3" placeholder="Descreva o produto..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preço (R$) *</label>
+            <input type="number" id="productPrice" step="0.01" min="0" placeholder="0,00" />
+          </div>
+          <div class="form-group">
+            <label>Categoria *</label>
+            <input type="text" id="productCategory" placeholder="hambúrgueres" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="productAvailable" checked /> Disponível
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="productFeatured" /> Destaque
+            </label>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn--outline-dark" onclick="closeProductModal()">Cancelar</button>
+          <button class="btn btn--primary" id="btnSaveProduct">Salvar Produto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
