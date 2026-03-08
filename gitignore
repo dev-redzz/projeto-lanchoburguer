@@ -1,0 +1,18 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Env
+.env
+backend/.env
+
+# Uploads
+backend/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
