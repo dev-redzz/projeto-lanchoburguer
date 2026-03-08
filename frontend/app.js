@@ -9,12 +9,12 @@
 // CONFIG - Altere o número do WhatsApp aqui
 // =========================================
 const CONFIG = {
-  whatsappNumber: '5511999999999', // Número com DDI + DDD (sem espaços ou traços)
+  whatsappNumber: '5599984323844', // Número com DDI + DDD (sem espaços ou traços)
   deliveryFee: 5.00,
   storeName: 'LanchoBurguer',
   freeDeliveryAbove: 50.00,  // Frete grátis acima desse valor
-  apiUrl: 'http://localhost:3001/api', // URL do backend
-  useApi: false, // true = busca dados do backend; false = usa dados mockados
+  apiUrl: 'https://projeto-lanchoburguer-production.up.railway.app/api', // URL do backend
+  useApi: true, // true = busca dados do backend; false = usa dados mockados
 };
 
 // =========================================
