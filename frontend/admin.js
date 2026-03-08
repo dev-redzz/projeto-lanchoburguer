@@ -2,7 +2,7 @@
 'use strict';
 
 const API = 'https://projeto-lanchoburguer-production.up.railway.app/api';
-let token = localStorage.getItem('lb_admin_token');
+let token = localStorage.getItem('lb_admin_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5YWQ2YmU5MTU3Y2ExOTE1MGVjODk4NyIsImlhdCI6MTc3Mjk3MzAzMywiZXhwIjoxNzczNTc3ODMzfQ.4GLHSFOpJAgBHK_kdptfzQpFVxXBKbUKnzQRSbZ2CuA');
 let adminUser = null;
 
 // ───────────────────────────────────────────
